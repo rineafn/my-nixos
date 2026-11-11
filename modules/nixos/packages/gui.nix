@@ -15,6 +15,7 @@
     pencil
     texliveMedium
     thunderbird
+    vesktop
     xarchiver
     xournalpp
   ];

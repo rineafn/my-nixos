@@ -1,0 +1,15 @@
+.direnv/
+.envrc.local
+
+result
+result-*
+*.drv
+
+*.zip
+*.tar.*
+*.bak
+*~
+
+*.key
+*.secret
+*.pem

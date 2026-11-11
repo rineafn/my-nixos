@@ -1,0 +1,42 @@
+{ pkgs, ... }:
+
+{
+  environment.systemPackages = with pkgs; [
+    acpi
+    appimage-run
+    aria2
+    bottom
+    broot
+    chafa
+    czkawka
+    delta
+    duf
+    dust
+    ffmpeg
+    gallery-dl
+    glow
+    gping
+    hyperfine
+    imagemagick
+    lm_sensors
+    navi
+    ncdu
+    nvtopPackages.full
+    onefetch
+    ouch
+    pandoc
+    powertop
+    presenterm
+    procs
+    rclone
+    s-tui
+    spotdl
+    sad
+    taskwarrior-tui
+    taskwarrior3
+    tealdeer
+    tokei
+    ttyplot
+    yt-dlp
+  ];
+}

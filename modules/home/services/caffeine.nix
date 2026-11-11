@@ -1,0 +1,4 @@
+{ ... }:
+{
+  services.caffeine.enable = true;
+}

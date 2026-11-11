@@ -1,0 +1,160 @@
+(defpoll music :interval "1s"
+               :initial '{"status": "Stopped", "title": "Not playing", "artist": "", "art": "", "position": 0, "duration": 100, "position_time": "0:00", "duration_time": "0:00", "progress": 0}'
+               "bash ~/.config/eww/scripts/music_info.sh")
+
+(defpoll uptime :interval "1m" :initial "0:00" "uptime | sed -E 's/.*up[[:space:]]+([^,]+).*/\\1/'")
+(defpoll username :interval "24h" "whoami")
+
+(defwindow music_win_eDP-1
+  :monitor "eDP-1"
+  :windowtype "dialog"
+  :geometry (geometry :x "320px"
+                      :y "36px"
+                      :width "400px"
+                      :height "140px"
+                      :anchor "top right")
+  :wm-ignore true
+  (music_layout))
+
+(defwindow power_win_eDP-1
+  :monitor "eDP-1"
+  :windowtype "dialog"
+  :geometry (geometry :x "0px"
+                      :y "0px"
+                      :width "100%"
+                      :height "100%"
+                      :anchor "center")
+  :wm-ignore true
+  (power_layout))
+
+(defwindow music_win_HDMI-1
+  :monitor "HDMI-1"
+  :windowtype "dialog"
+  :geometry (geometry :x "320px"
+                      :y "36px"
+                      :width "400px"
+                      :height "140px"
+                      :anchor "top right")
+  :wm-ignore true
+  (music_layout))
+
+(defwindow power_win_HDMI-1
+  :monitor "HDMI-1"
+  :windowtype "dialog"
+  :geometry (geometry :x "0px"
+                      :y "0px"
+                      :width "100%"
+                      :height "100%"
+                      :anchor "center")
+  :wm-ignore true
+  (power_layout))
+
+(defwidget music_layout []
+  (box :class "music-widget"
+       :orientation "h"
+       :space-evenly false
+       :valign "fill"
+       :halign "fill"
+    ;; Cover — box kosong, ukuran dari CSS min-width/min-height
+    ;; tanpa itu GTK collapse ke 0x0 karena background-image bukan konten
+    (box :class "music-cover"
+         :valign "center"
+         :halign "start"
+         :style "background-image: url('${music.art}');"
+      (box :visible {"${music.art}" == ""}
+           :class "music-cover-fallback"
+           :valign "fill"
+           :halign "fill"
+        (label :class "music-fallback-icon"
+               :valign "center"
+               :halign "center"
+               :text "󰝚")))
+    ;; Info + controls
+    (box :class "music-info"
+         :orientation "v"
+         :space-evenly false
+         :valign "center"
+         :halign "fill"
+         :hexpand true
+      (label :class "music-title"
+             :halign "start"
+             :limit-width 22
+             :text {music.title != "" ? music.title : "Not Playing"})
+      (label :class "music-artist"
+             :halign "start"
+             :limit-width 26
+             :text {music.artist != "" ? music.artist : "Unknown Artist"})
+      (box :class "music-progress-box"
+           :orientation "h"
+           :space-evenly false
+           :halign "fill"
+           :hexpand true
+        (label :class "music-time" :text {music.position_time})
+        (scale :class "music-bar"
+               :hexpand true
+               :min 0 :max 100
+               :value {music.progress}
+               :active false)
+        (label :class "music-time" :text {music.duration_time}))
+      (box :class "music-controls"
+           :orientation "h"
+           :space-evenly false
+           :halign "start"
+        (button :valign "center" :halign "center"
+                :onclick "playerctl previous"
+                :class "music-btn prev" "󰒮")
+        (button :valign "center" :halign "center"
+                :onclick "playerctl play-pause"
+                :class "music-btn play"
+                {music.status == "Playing" ? "󰏤" : "󰐊"})
+        (button :valign "center" :halign "center"
+                :onclick "playerctl next"
+                :class "music-btn next" "󰒭")))))
+
+(defwidget power_layout []
+  (box :class "power-bg"
+       :orientation "v"
+       :space-evenly false
+       :valign "fill"
+       :halign "fill"
+       :vexpand true
+       :hexpand true
+    (box :class "power-container"
+         :orientation "v"
+         :space-evenly false
+         :valign "center"
+         :halign "center"
+         :vexpand true
+         :hexpand true
+      (box :class "power-profile"
+           :orientation "v"
+           :space-evenly false
+           :halign "center"
+        ;; Avatar — box kosong tanpa child, WAJIB min-width/min-height di CSS
+        (box :class "power-avatar"
+             :valign "center"
+             :halign "center")
+        (label :class "power-name" :text "Hi, ${username}")
+        (label :class "power-uptime" :text "Uptime: ${uptime}"))
+      (box :class "power-buttons"
+           :orientation "h"
+           :space-evenly false
+           :halign "center"
+        (button :valign "center" :halign "center"
+                :class "power-btn shutdown"
+                :onclick "eww close-all; i3-msg mode default; systemctl poweroff" "󰐥")
+        (button :valign "center" :halign "center"
+                :class "power-btn reboot"
+                :onclick "eww close-all; i3-msg mode default; systemctl reboot" "")
+        (button :valign "center" :halign "center"
+                :class "power-btn suspend"
+                :onclick "eww close-all; i3-msg mode default; systemctl suspend" "󰤄")
+        (button :valign "center" :halign "center"
+                :class "power-btn lock"
+                :onclick "eww close-all; i3-msg mode default; ~/.config/i3/scripts/lock.sh" "󰌾")
+        (button :valign "center" :halign "center"
+                :class "power-btn exit"
+                :onclick "i3-msg exit" "󰍃"))
+      (button :valign "center" :halign "center"
+              :class "power-cancel"
+              :onclick "eww close-all; i3-msg mode default" "Cancel"))))

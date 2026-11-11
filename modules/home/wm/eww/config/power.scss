@@ -1,0 +1,146 @@
+.power-bg {
+  background-color: rgba(17, 17, 27, 0.88);
+}
+
+.power-container {
+  background-color: rgba(30, 30, 46, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 30px 40px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  min-width: 400px;
+}
+
+.power-avatar {
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: 99px;
+  background-color: $surface0;
+  background-size: cover;
+  background-position: center;
+  background-image: url("file:///home/fukukita/Pictures/Avatar.jpg");
+  border: 2px solid $accent;
+  box-shadow:
+    0 0 0 4px rgba(203, 166, 247, 0.15),
+    0 6px 20px rgba(0, 0, 0, 0.45);
+  margin-bottom: 14px;
+}
+
+.power-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: $text;
+  margin-bottom: 5px;
+  min-height: 28px;
+}
+
+.power-uptime {
+  font-size: 12px;
+  font-weight: 600;
+  color: $subtext;
+  min-height: 20px;
+}
+
+.power-buttons {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  min-height: 80px;
+}
+
+.power-btn {
+  font-size: 28px;
+  color: $text;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
+  min-width: 72px;
+  min-height: 72px;
+  margin: 0 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.power-btn.shutdown {
+  color: $red;
+  &:hover {
+    background-color: rgba(243, 139, 168, 0.13);
+    box-shadow: 0 6px 20px rgba(243, 139, 168, 0.22);
+    border-color: rgba(243, 139, 168, 0.28);
+  }
+  &:active { background-color: rgba(243, 139, 168, 0.24); }
+}
+
+.power-btn.reboot {
+  color: $peach;
+  &:hover {
+    background-color: rgba(250, 179, 135, 0.13);
+    box-shadow: 0 6px 20px rgba(250, 179, 135, 0.22);
+    border-color: rgba(250, 179, 135, 0.28);
+  }
+  &:active { background-color: rgba(250, 179, 135, 0.24); }
+}
+
+.power-btn.suspend {
+  color: $yellow;
+  &:hover {
+    background-color: rgba(249, 226, 175, 0.13);
+    box-shadow: 0 6px 20px rgba(249, 226, 175, 0.22);
+    border-color: rgba(249, 226, 175, 0.28);
+  }
+  &:active { background-color: rgba(249, 226, 175, 0.24); }
+}
+
+.power-btn.lock {
+  color: $green;
+  &:hover {
+    background-color: rgba(166, 227, 161, 0.13);
+    box-shadow: 0 6px 20px rgba(166, 227, 161, 0.22);
+    border-color: rgba(166, 227, 161, 0.28);
+  }
+  &:active { background-color: rgba(166, 227, 161, 0.24); }
+}
+
+.power-btn.exit {
+  color: $accent;
+  &:hover {
+    background-color: rgba(203, 166, 247, 0.13);
+    box-shadow: 0 6px 20px rgba(203, 166, 247, 0.22);
+    border-color: rgba(203, 166, 247, 0.28);
+  }
+  &:active { background-color: rgba(203, 166, 247, 0.24); }
+}
+
+.power-cancel {
+  font-size: 11px;
+  font-weight: 700;
+  color: $subtext1;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 10px 40px;
+  min-height: 36px;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+
+  &:hover {
+    background-color: $surface1;
+    color: $text;
+  }
+  &:active {
+    background-color: $surface2;
+    color: #ffffff;
+  }
+}

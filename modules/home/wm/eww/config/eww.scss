@@ -1,0 +1,159 @@
+$bg:       #1e1e2e;
+$mantle:   #181825;
+$surface0: #313244;
+$surface1: #45475a;
+$surface2: #585b70;
+$overlay0: #6c7086;
+$text:     #cdd6f4;
+$subtext1: #bac2de;
+$subtext:  #a6adc8;
+$accent:   #cba6f7;
+$blue:     #89b4fa;
+$red:      #f38ba8;
+$green:    #a6e3a1;
+$peach:    #fab387;
+$yellow:   #f9e2af;
+
+* {
+  font-family: "Inter", "Ubuntu", "Roboto", sans-serif;
+}
+
+.music-widget {
+  background-color: rgba(30, 30, 46, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 10px 14px;
+  min-height: 120px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65);
+}
+
+.music-cover {
+  min-width: 96px;
+  min-height: 96px;
+  border-radius: 12px;
+  background-color: $surface0;
+  background-size: cover;
+  background-position: center;
+  margin-right: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+}
+
+.music-cover-fallback {
+  min-width: 96px;
+  min-height: 96px;
+  border-radius: 12px;
+  background-color: rgba(203, 166, 247, 0.10);
+}
+
+.music-fallback-icon {
+  font-size: 38px;
+  color: $accent;
+}
+
+.music-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: $text;
+  margin-bottom: 1px;
+}
+
+.music-artist {
+  font-size: 11px;
+  font-weight: 600;
+  color: $subtext;
+  margin-bottom: 6px;
+}
+
+.music-progress-box {
+  margin-bottom: 5px;
+}
+
+.music-time {
+  font-size: 10px;
+  font-weight: 700;
+  color: $overlay0;
+  margin: 0 4px;
+}
+
+scale.music-bar {
+  min-width: 100px;
+  margin: 0 4px;
+
+  trough {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    min-height: 4px;
+    border: none;
+    box-shadow: none;
+  }
+
+  highlight,
+  progress {
+    background-color: $accent;
+    border-radius: 6px;
+    min-height: 4px;
+    border: none;
+    box-shadow: none;
+  }
+
+  slider {
+    background-color: #ffffff;
+    border-radius: 99px;
+    min-width: 12px;
+    min-height: 12px;
+    border: none;
+    box-shadow: 0 0 5px rgba(203, 166, 247, 0.45);
+    transition: min-width 120ms ease, min-height 120ms ease;
+
+    &:hover {
+      background-color: $accent;
+      min-width: 14px;
+      min-height: 14px;
+    }
+  }
+}
+
+.music-btn {
+  font-size: 16px;
+  color: $subtext1;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 99px;
+  min-width: 32px;
+  min-height: 32px;
+  margin: 0 3px;
+  border: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+
+  &:hover {
+    color: $bg;
+    background-color: $accent;
+    box-shadow: 0 3px 10px rgba(203, 166, 247, 0.38);
+  }
+
+  &:active {
+    background-color: rgba(203, 166, 247, 0.60);
+  }
+}
+
+.music-btn.play {
+  font-size: 18px;
+  color: $bg;
+  background-color: $blue;
+  min-width: 40px;
+  min-height: 40px;
+  box-shadow: 0 3px 12px rgba(137, 180, 250, 0.32);
+
+  &:hover {
+    background-color: #a6c9fc;
+    box-shadow: 0 5px 16px rgba(137, 180, 250, 0.52);
+  }
+
+  &:active {
+    background-color: #6fa8f5;
+  }
+}
+
+@import "power";

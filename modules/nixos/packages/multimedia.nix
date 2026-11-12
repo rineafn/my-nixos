@@ -26,5 +26,7 @@
     simplescreenrecorder
     slurp
     vlc
+    glaxnimate
+    synfigstudio
   ];
 }

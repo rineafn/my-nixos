@@ -15,9 +15,21 @@
 
   security.rtkit.enable = true;
 
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 8;
+  };
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";
+    memoryPercent = 100;
+  };
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 100;
+    "vm.page-cluster" = 0;
+    "vm.vfs_cache_pressure" = 50;
   };
 
   services = {
